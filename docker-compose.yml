@@ -1,0 +1,27 @@
+services:
+  back:
+    container_name: back
+    build: docker/node
+    volumes:
+      - "./back:/www"
+    ports:
+      - "3000:3000"
+
+  front:
+    container_name: front
+    build: docker/node
+    volumes:
+      - "./front:/www"
+    ports:
+      - "4200:4200"
+
+  mongo:
+    image: mongo:5.0
+    container_name: mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      - "MONGO_INITDB_DATABASE=db_name"
+      - "MONGO_INITDB_ROOT_USERNAME=db_user"
+      - "MONGO_INITDB_ROOT_PASSWORD=db_pass"
