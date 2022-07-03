@@ -10,7 +10,4 @@ RUN npm install -g @nestjs/cli
 
 RUN npm install -g @angular/cli
 
-ARG DOCKER_UID=1000
-ARG DOCKER_GID=1000
-
 WORKDIR /www

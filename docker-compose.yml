@@ -1,19 +1,23 @@
 services:
   back:
-    container_name: back
+    container_name: dash-back
     build: docker/node
     volumes:
       - "./back:/www"
     ports:
       - "3000:3000"
+    entrypoint:
+      /bin/sh -c "npm i && npm run start:dev"
 
   front:
-    container_name: front
+    container_name: dash-front
     build: docker/node
     volumes:
       - "./front:/www"
     ports:
       - "4200:4200"
+    entrypoint:
+      /bin/sh -c "npm i && ng s"
 
   mongo:
     image: mongo:5.0
